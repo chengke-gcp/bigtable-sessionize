@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gen-events-v2
+spec:
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: gen-events
+        version: v2
+    spec:
+      containers:
+      - name: gen-events
+        image: gcr.io/bigtable-sessionize/gen-events:v1.0
+        imagePullPolicy: IfNotPresent
+        resources: 
+          requests: 
+            cpu: "125m"
+            memory: "64Mi"
+        volumeMounts:
+        - name: credentials
+          mountPath: "/credentials"
+          readOnly: true
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /credentials/pubsub-writer.json
+      volumes:
+      - name: credentials
+        secret:
+          secretName: pubsub-writer-credential
