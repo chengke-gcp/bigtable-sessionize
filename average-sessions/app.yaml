@@ -24,7 +24,7 @@ spec:
           readOnly: true
         env:
           - name: GOOGLE_APPLICATION_CREDENTIALS
-            value: /credentials/pubsub-writer.json
+            value: /credentials/average-sessions.json
       volumes:
       - name: credentials
         secret:
