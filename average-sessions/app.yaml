@@ -11,7 +11,7 @@ spec:
         version: v1
     spec:
       containers:
-      - name: gen-events
+      - name: average-sessions
         image: gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions:26d82092ae66609dfe7125839ebade7f74d84ed8
         imagePullPolicy: IfNotPresent
         resources: 
