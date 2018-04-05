@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: gen-events-v2
+  name: average-sessions-v1
 spec:
   replicas: 10
   template:
     metadata:
       labels:
-        app: gen-events
-        version: v2
+        app: average-sessions-v1
+        version: v1
     spec:
       containers:
       - name: gen-events
-        image: gcr.io/bigtable-sessionize/gen-events:v1.0
+        image: gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions:26d82092ae66609dfe7125839ebade7f74d84ed8
         imagePullPolicy: IfNotPresent
         resources: 
           requests: 
