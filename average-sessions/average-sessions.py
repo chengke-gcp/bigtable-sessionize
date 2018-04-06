@@ -18,9 +18,9 @@ class AverageSessions:
         self.bigtable_instance = self.bigtable_client.instance(bt_instance_name)
         self.bigtable_table = self.bigtable_instance.table(bt_table_name)
 
-        self.bigquery_client = bigquery.Client(credentials = credentials)
-        self.bigquery_dataset = self.bigquery_client.dataset(bq_dataset_name)
-        self.bigquery_table = self.bigquery_dataset.table(bq_table_name)
+#        self.bigquery_client = bigquery.Client(credentials = credentials)
+ #       self.bigquery_dataset = self.bigquery_client.dataset(bq_dataset_name)
+  #      self.bigquery_table = self.bigquery_dataset.table(bq_table_name)
 
         self.subscriber = pubsub.SubscriberClient(credentials = credentials)
         self.subscription = self.subscriber.subscribe(subscription_name, callback = self.pubsub_callback)
@@ -47,11 +47,11 @@ class AverageSessions:
             num_messages = num_messages + 1
             
         if num_messages > 0:
-            bq_rows_to_insert = [(session_id, sum/float(num_messages))]
-            errors = bigquery_client.insert_rows(bigquery_table, bq_rows_to_insert)  # API request
-            assert errors == []
+#            bq_rows_to_insert = [(session_id, sum/float(num_messages))]
+#            errors = bigquery_client.insert_rows(bigquery_table, bq_rows_to_insert)  # API request
+#            assert errors == []
 
-#          print("Average for Session: {} = {}".format(session_id, sum/float(num_messages)))
+          print("Average for Session: {} = {}".format(session_id, sum/float(num_messages)))
 
 
 
@@ -64,10 +64,11 @@ if __name__ == "__main__":
     subscription_name = 'projects/bigtable-sessionize/subscriptions/average-sessions'
     bt_instance_name = 'messages'
     bt_table_name = 'messages'
-    bq_dataset_name = 'session_averages'
-    bq_table_name = 'session_averages'
+#    bq_dataset_name = 'session_averages'
+#    bq_table_name = 'session_averages'
 
-    average_sessions = AverageSessions(credentials, subscription_name, bt_instance_name, bt_table_name, bq_dataset_name, bq_table_name)
+    average_sessions = AverageSessions(credentials, subscription_name, bt_instance_name, bt_table_name)
+     #bq_dataset_name, bq_table_name)
 
     while True:
         time.sleep(60)
