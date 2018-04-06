@@ -18,7 +18,7 @@ class AverageSessions:
         self.bigtable_instance = self.bigtable_client.instance(bt_instance_name)
         self.bigtable_table = self.bigtable_instance.table(bt_table_name)
 
-        self.bigquery_client = biquery.Client(credentials = credentials)
+        self.bigquery_client = bigquery.Client(credentials = credentials)
         self.bigquery_dataset = self.bigquery_client.dataset(bq_dataset_name)
         self.bigquery_table = self.bigquery_dataset.table(bq_table_name)
 
