@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: average-sessions
-        image: pull gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions
+        image: gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions:latest
         imagePullPolicy: IfNotPresent
         resources: 
           requests: 
