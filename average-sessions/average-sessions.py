@@ -2,6 +2,7 @@ from google.cloud import pubsub
 from google.cloud.pubsub import types
 from google.cloud import bigtable
 from google.oauth2 import service_account
+from google.cloud import bigquery
 
 import sys
 import time
@@ -10,6 +11,7 @@ class AverageSessions:
 
     start_key_suffix = "00000"
     end_key_suffix  = "99999"
+    client = bigquery.Client(project='bigtable-sessionize')
 
     def __init__(self, credentials, subscription_name, bt_instance_name, bt_table_name ):
 
@@ -25,6 +27,11 @@ class AverageSessions:
         self.read_bigtable_rows(session_id)
         message.ack()
 
+    def writeToBQ():
+        rows_to_insert = [
+            (session_id, join),
+        ]   
+
     def read_bigtable_rows(self, session_id):
         start_key ="{}#{}".format(session_id, self.start_key_suffix).encode('UTF-8')
         end_key = "{}#{}".format(session_id, self.end_key_suffix).encode('UTF-8')
@@ -33,6 +40,7 @@ class AverageSessions:
             end_key=end_key)
         row_data.consume_all()
         rows = row_data.rows
+        join = format(session_id, sum/float(num_messages))
         sum = 0
         num_messages = 0
         for rowkey, row in rows.items():
@@ -43,9 +51,8 @@ class AverageSessions:
             
         if num_messages > 0:
           print("Average for Session: {} = {}".format(session_id, sum/float(num_messages)))
-
-    def exportBQ():
-        pass
+          writeToBQ()
+        
 
 if __name__ == "__main__":
 
