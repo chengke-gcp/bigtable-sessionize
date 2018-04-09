@@ -12,7 +12,8 @@ spec:
     spec:
       containers:
       - name: average-sessions
-        image: pull gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions        imagePullPolicy: IfNotPresent
+        image: pull gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/average-sessions
+        imagePullPolicy: IfNotPresent
         resources: 
           requests: 
             cpu: "125m"
