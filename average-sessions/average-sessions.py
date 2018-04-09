@@ -69,7 +69,7 @@ if __name__ == "__main__":
 #    bq_table_name = 'session_averages'
 
     average_sessions = AverageSessions(credentials, subscription_name, bt_instance_name, bt_table_name)
-     #bq_dataset_name, bq_table_name)
+#    bq_dataset_name, bq_table_name)
 
     while True:
         time.sleep(60)
