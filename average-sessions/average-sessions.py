@@ -12,7 +12,8 @@ class AverageSessions:
     start_key_suffix = "00000"
     end_key_suffix  = "99999"
 
-    def __init__(self, credentials, subscription_name, bt_instance_name, bt_table_name, bq_dataset_name, bq_table_name ):
+    def __init__(self, credentials, subscription_name, bt_instance_name, bt_table_name ): 
+#bq_dataset_name, bq_table_name ):
 
         self.bigtable_client = bigtable.Client(credentials = credentials, read_only=True)
         self.bigtable_instance = self.bigtable_client.instance(bt_instance_name)
