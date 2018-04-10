@@ -20,6 +20,14 @@ import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubMessage;
 
+# BigQuery
+import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
+
+import com.google.api.services.bigquery.model.TableFieldSchema;
+import com.google.api.services.bigquery.model.TableRow;
+import com.google.api.services.bigquery.model.TableSchema;
+# End BigQuery
+
 import com.google.cloud.bigtable.beam.CloudBigtableIO;
 import com.google.cloud.bigtable.beam.CloudBigtableTableConfiguration;
 import org.apache.hadoop.hbase.client.Mutation;

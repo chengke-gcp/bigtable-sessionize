@@ -43,7 +43,7 @@ class AverageSessions:
             num_messages = num_messages + 1
             
         if num_messages > 0:
-          print("Average for Session id: {} = {}".format(session_id, sum/float(num_messages)))
+          print("Average for Session ID: {} = {}".format(session_id, sum/float(num_messages)))
 
         
 if __name__ == "__main__":
