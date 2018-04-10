@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: gen-events
-        image: gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/gen-events:26d82092ae66609dfe7125839ebade7f74d84ed8
+        image: gcr.io/bigtable-sessionize/github-chengke-gcp-bigtable-sessionize/gen-events:2c1581d6c1211e40e67feeaf4b116f37a4da5f84
         imagePullPolicy: IfNotPresent
         resources: 
           requests: 
